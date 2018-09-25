@@ -6,6 +6,7 @@
 package fr.ufrsciencestech.panier;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -56,11 +57,15 @@ public class Panier {
     
     public int boycotteOrigine(String s)
     {
-        ArrayList<int> tmp = new <int>ArrayList();
+        ArrayList tmp=new ArrayList();
         for(Orange o:tabOrange)
         {
             if(o.getOrigine().equals(s))
-                tabOrange.remove(o);
+                tmp.add(tabOrange.indexOf(o));
+        }
+        for(Object a : tmp)
+        {
+            tabOrange.remove((int)a);
         }
         return 0;
     }
@@ -73,6 +78,7 @@ public class Panier {
                 s+=tabOrange.get(i).toString()+"\n";
             
             }
+            s+="}";
         return s;
     }
 
