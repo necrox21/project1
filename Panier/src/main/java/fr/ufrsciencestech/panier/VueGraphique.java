@@ -5,6 +5,7 @@
  */
 package fr.ufrsciencestech.panier;
 
+import java.awt.BorderLayout;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
@@ -15,13 +16,13 @@ import javax.swing.*;
  */
 public class VueGraphique extends JFrame implements Observer {
 
-    private JPanel container = new JPanel();
+    private JPanel container = new JPanel(new BorderLayout());
     
     public VueGraphique()
     {
     this.setSize(240, 260);
 
-    this.setTitle("Calculette");
+    this.setTitle("Panier d'orange");
 
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -30,7 +31,6 @@ public class VueGraphique extends JFrame implements Observer {
     this.setResizable(false);
 
     initComposant();                
-           
 
     this.setContentPane(container);
 
@@ -38,7 +38,10 @@ public class VueGraphique extends JFrame implements Observer {
     }
     
     private void initComposant(){
-    
+        JButton plus = new JButton("+");
+        JButton moins = new JButton("-");
+        container.add(plus,BorderLayout.NORTH);
+        container.add(moins,BorderLayout.SOUTH);
     }
     
     
