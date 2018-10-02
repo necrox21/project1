@@ -7,12 +7,13 @@ package fr.ufrsciencestech.panier;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 /**
  *
  * @author bt479917
  */
-public class Panier {
+public class Panier extends Observable {
     int tailleMax;
     ArrayList<Orange> tabOrange;
     
@@ -35,13 +36,22 @@ public class Panier {
     
     public int ajoute(Orange o)
     {
-        tabOrange.add(o);
+        if(tabOrange.size()<tailleMax){
+            tabOrange.add(o);
+        setChanged();
+        notifyObservers("ajout d'une orange "+o.getOrigine()+" "+o.getPrix());
+        }
         return 0;
     }
     
     public int retire()
     {
-        tabOrange.remove(tabOrange.size()-1);
+        if(tabOrange.size()>0)
+        {
+            tabOrange.remove(tabOrange.size()-1);
+        setChanged();
+        notifyObservers("supression de la derniere orange ");
+        }
         return 0;
     }
     
@@ -67,6 +77,8 @@ public class Panier {
         {
             tabOrange.remove((int)a);
         }
+        setChanged();
+        notifyObservers("boycotteOrigine"+" "+s);
         return 0;
     }
 
