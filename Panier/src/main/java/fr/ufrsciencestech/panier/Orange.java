@@ -44,8 +44,12 @@ public class Orange {
     public boolean equals(Orange o)
     {
         boolean res = false;
-        if(this.prix==o.prix)
-            res = true;
-        return(this.origine.equals(o.origine) && res);
+        if(o!=null)
+        {
+            if(this.prix==o.prix)
+                res = true;
+            return(this.origine.equals(o.origine) && res);
+        }
+        return res;
     }
 }
