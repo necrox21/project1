@@ -24,6 +24,7 @@ public class Panier extends Observable {
 
     public Panier(int taille){
         tailleMax = taille;
+        tabOrange = new <Orange>ArrayList();
     }
 
     public boolean estPlein(){
@@ -71,11 +72,11 @@ public class Panier extends Observable {
         for(Orange o:tabOrange)
         {
             if(o.getOrigine().equals(s))
-                tmp.add(tabOrange.indexOf(o));
+                tmp.add(o);
         }
         for(Object a : tmp)
         {
-            tabOrange.remove((int)a);
+            tabOrange.remove(a);
         }
         setChanged();
         notifyObservers("boycotteOrigine"+" "+s);
@@ -97,9 +98,14 @@ public class Panier extends Observable {
     protected final boolean equals(Panier p)
     { 
         boolean res = false;
-        if(this.tailleMax==p.tailleMax)
-            res = true;
-        return ( res && this.tabOrange.equals(p.tabOrange) );
+            if(p!=null)
+            {
+                if(this.tailleMax==p.tailleMax)
+                    res = true;
+                return ( res && this.tabOrange.equals(p.tabOrange) );
+    
+            }
+            return res;
     }
 
 }
