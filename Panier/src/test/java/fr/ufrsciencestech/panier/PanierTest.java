@@ -136,6 +136,7 @@ public class PanierTest {
     /**
      * Test of toString method, of class Panier.
      */
+    @Ignore
     @Test
     public void testToString() {
         System.out.println("toString");
